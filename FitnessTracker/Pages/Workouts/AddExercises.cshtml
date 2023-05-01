@@ -1,0 +1,87 @@
+﻿@page "/AddExercises/{workoutId:int}"
+@model FitnessTracker.Pages.Workouts.AddExercisesModel
+@{
+
+
+<h1 class="mb-3">Add Exercises</h1>
+
+<form method="post">
+
+    <input type="hidden" asp-for="WorkoutId" />
+        
+            <div class="mb-3">
+                <label class="form-label">Exercise </label>
+                <select class="form-control" asp-for="SelectedExerciseId">
+                    @foreach (var exercise in Model.exercises)
+                    {
+                        <option value="@exercise.ExerciseId">@exercise.Name</option>
+                    }
+
+                </select>
+            </div>
+    
+
+    <div class="mb-3">
+        <label class="form-label">Weight</label>
+        <input type="number" class="form-control" asp-for="Weight" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Reps</label>
+        <input type="number" class="form-control" asp-for="Reps" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Sets</label>
+        <input type="number" class="form-control" asp-for="Sets" />
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Add Exercise</button>
+    </div>
+
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Exercise Name</th>
+            <th>Weight</th>
+            <th>Reps</th>
+            <th>Sets</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @*
+            @if (Model.exercises != null)
+            {
+            @foreach (var exercise in Model.workoutExercises)
+        {
+                var exerciseName = "";
+
+                foreach (var e in Model.exercises)
+                {
+                    if (e.ExerciseId == exercise.ExerciseId)
+                    {
+                        exerciseName = e.Name;
+                        break;
+                    }
+                }
+                <tr>
+                <td>@exerciseName</td>
+                <td>@exercise.weight</td>
+                <td>@exercise.Reps</td>
+                <td>@exercise.nSets</td>
+                <td>
+                To be continued!   <button class="btn btn-danger" onClick="@(() => DeleteExercise(exercise.ExerciseId))">Delete</button>
+                
+                </td>
+            
+                </tr>
+        }    
+            }
+            *@
+    </tbody>
+</table>
+}
